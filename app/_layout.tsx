@@ -4,11 +4,13 @@ import { Stack } from "expo-router";
 export default function RootLayout() {
   const { isLoggedIn } = useAuthState();
 
-  return <Stack screenOptions={{
-
-  }}>
+  return <Stack>
     <Stack.Protected guard={isLoggedIn}>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="[postId]" options={{
+        title: "Comments",
+        headerBackTitle: 'Home'
+      }}/>
     </Stack.Protected>
     <Stack.Protected guard={!isLoggedIn}>
       <Stack.Screen options={{
