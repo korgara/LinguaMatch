@@ -1,6 +1,7 @@
 import { useAuthState } from '@/utils/useAuthState';
 import { Formik } from 'formik';
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, StyleSheet, Text, TextInput } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Yup from 'yup';
 
 const LoginSchema = Yup.object().shape({
@@ -29,7 +30,7 @@ export default function SignIn() {
   }
 
   return (
-    <View
+    <SafeAreaView
       style={{
         flex: 1,
         justifyContent: "flex-start",
@@ -41,6 +42,9 @@ export default function SignIn() {
         onSubmit={onSubmit}>
         {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
           <>
+            <Text style={styles.label}>
+              Email:
+            </Text>
             <TextInput
               autoCapitalize="none"
               keyboardType="email-address"
@@ -52,13 +56,16 @@ export default function SignIn() {
             {errors.email && <Text style={styles.errorText}>
               {errors.email}
             </Text>}
+            <Text style={styles.label}>
+              Password:
+            </Text>
             <TextInput
               autoCapitalize="none"
               secureTextEntry
               onChangeText={handleChange('password')}
               onBlur={handleBlur('email')}
               value={values.password}
-              style={{ ...styles.input, marginTop: 10 }}
+              style={{ ...styles.input}}
             />
             {errors.password && <Text style={styles.errorText}>
               {errors.password}
@@ -67,7 +74,7 @@ export default function SignIn() {
           </>
         )}
       </Formik>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -76,10 +83,15 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1,
     padding: 10,
-    width: '100%'
+    width: '100%',
+    marginBottom: 10,
   },
   errorText: {
     color: 'red',
-    alignSelf: 'flex-start'
+    alignSelf: 'flex-start',
+  },
+  label: {
+    alignSelf: 'flex-start',
+    marginBottom: 5
   }
 });

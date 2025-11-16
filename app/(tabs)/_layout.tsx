@@ -3,9 +3,15 @@ import { Tabs } from 'expo-router';
 
 export default function TabLayout() {
   return (
-    <Tabs >
+    <Tabs screenOptions={{
+      tabBarStyle: {
+        paddingTop: 5
+      }
+    }} safeAreaInsets={{
+      bottom: 15
+    }}>
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => <MaterialIcons size={28} name="house-siding" color={color} />,

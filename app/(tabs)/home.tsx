@@ -1,7 +1,7 @@
 import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Profile() {
+export default function Home() {
   return (
     <SafeAreaView
       style={{
@@ -10,7 +10,7 @@ export default function Profile() {
         alignItems: "center",
       }}
     >
-      <Text>Profile</Text>
+      <Text>Home</Text>
     </SafeAreaView>
   );
 }

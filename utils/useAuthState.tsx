@@ -15,7 +15,7 @@ export const useAuthState = () => {
   }
 
   return {
-    isLoggedIn: Boolean(auth?.expiresAt && (auth.expiresAt - TWO_DAYS_MS) < Date.now()),
+    isLoggedIn: Boolean(auth?.expiresAt && (Date.now() - auth?.expiresAt) < TWO_DAYS_MS),
     login
   };
 }
